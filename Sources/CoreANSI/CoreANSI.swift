@@ -372,7 +372,13 @@ public typealias CACoordinates = (x: Int, y: Int)
         ws_xpixel: 0,
         ws_ypixel: 0)
     withUnsafeMutablePointer(to: &window) { pointer in
+        #if os(macOS)
         _ = ioctl(0, TIOCGWINSZ, pointer)
+        #elseif os(Linux)
+        // Idk why I had to do this but ok
+        // Thanks github!
+        _ = ioctl(0, UInt(TIOCGWINSZ), pointer)
+        #endif
     }
     let size: CACoordinates = (Int(window.ws_col), Int(window.ws_row))
     return size
