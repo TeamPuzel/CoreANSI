@@ -361,8 +361,6 @@ public enum PrivateModes {
     case disableAlternativeBuffer
 }
 
-// TODO: Implement this
-
 public typealias CACoordinates = (x: Int, y: Int)
 
 @inlinable public func getWindowSize() -> CACoordinates {
@@ -501,7 +499,7 @@ public enum CAScreenMode {
 //
 //  IMPORTANT: Some of the values in the following table are not valid for all computers. Check your computer's documentation for values that are different.
 
-struct KeyboardMapping {
+public struct KeyboardMapping {
     struct MappableKey {
         let name: String
         let code: String
